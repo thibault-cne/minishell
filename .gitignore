@@ -1,0 +1,8 @@
+# Ignore C object files
+*.o
+
+# Ignore build folder
+build/
+
+# Ignore vscode config
+.vscode/
