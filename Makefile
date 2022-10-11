@@ -1,4 +1,4 @@
-FILES 	=	
+FILES 	=	main.c parser.c token.c
 
 S_PATH	=	srcs/
 O_PATH	=	objs/
