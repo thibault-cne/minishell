@@ -2,6 +2,9 @@
 #define MINISHELL_TOKEN_H
 
 #include <stdlib.h>
+#include <string.h>
+
+#define MAX_SIZE 0xFF // Max size of a token data
 
 enum _TokenType
 {
@@ -16,7 +19,7 @@ struct _Token
 {
     int type;
     int pos;
-    char *data;
+    char data[MAX_SIZE];
 };
 typedef struct _Token Token;
 

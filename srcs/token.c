@@ -16,7 +16,7 @@ void create_token(Token *t, int type, int pos, char *data)
 {
     t->type = type;
     t->pos = pos;
-    t->data = data;
+    strncpy(t->data, data, MAX_SIZE);
 }
 
 void create_token_list(TokenList *l, int size)

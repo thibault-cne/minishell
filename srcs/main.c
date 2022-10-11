@@ -13,6 +13,7 @@
 #include <stdio.h>
 
 #include "../includes/parser.h"
+#include "../includes/exec.h"
 
 int main(int argc, char **argv)
 {
@@ -30,10 +31,25 @@ int main(int argc, char **argv)
             return 1;
         }
 
+        ExecStatus estat = execution_start(&tokens);
+
+        if (estat != EXEC_SUCCESS)
+        {
+            printf("Error during execution");
+            return 1;
+        }
+
         // Free all allocated memory
         destroy_token_list(&tokens);
 
         return 0;
+    }
+    else
+    {
+        char *programName = "ls";
+        char *args[] = {programName, "-al", NULL};
+
+        execvp(programName, args);
     }
 
     return 0;

@@ -46,7 +46,7 @@ ParserStatus parser_start(TokenList *l, const char *source)
 
         create_token(&t, type, pos, lex);
         add_token_list(l, t);
-        printf("New token : %d %s\n", type, lex);
+        printf("New token : %d %s\n", t.type, t.data);
 
         // Check for end of input
         if (source[i] == '\0')
@@ -71,11 +71,7 @@ TokenType parser_get_func(const char *buf)
     {
         return FUNC;
     }
-    if (strcmp(buf, "help") == 0)
-    {
-        return FUNC;
-    }
-    if (strcmp(buf, "hello") == 0)
+    if (strcmp(buf, "cat") == 0)
     {
         return FUNC;
     }
