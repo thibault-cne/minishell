@@ -17,6 +17,7 @@ typedef enum _ParserStatus ParserStatus;
 
 ParserStatus parser_start(TokenList *l, const char *source);
 
+TokenType parser_get_builtin(const char *buf);
 TokenType parser_get_func(const char *buf);
 TokenType parser_get_token_type(const char *buf);
 

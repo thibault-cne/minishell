@@ -28,5 +28,6 @@ ExecStatus execution_start(TokenList *l);
 
 int exec_get_related_args(TokenList *l, int index);
 void exec_args(Exec *e, char *f[MAX_ARGS]);
+void exec_func(Token *t);
 
 #endif // MINISHELL_EXEC_H

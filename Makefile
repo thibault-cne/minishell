@@ -1,4 +1,4 @@
-FILES 	=	main.c parser.c token.c exec.c
+FILES 	=	main.c parser.c token.c exec.c colors.c
 
 S_PATH	=	srcs/
 O_PATH	=	objs/

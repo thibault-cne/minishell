@@ -24,7 +24,7 @@ ExecStatus execution_start(TokenList *l)
     {
         t = get_token_list(l, i);
 
-        if (t->type == FUNC)
+        if (t->type == BULTIN)
         {
             int n;
             int fi;
@@ -63,6 +63,11 @@ ExecStatus execution_start(TokenList *l)
             }
 
             i += n;
+        }
+
+        if (t->type == FUNC)
+        {
+            exec_func(t);
         }
     }
 
@@ -115,5 +120,13 @@ void exec_args(Exec *e, char *f[MAX_ARGS])
         // waiting for child to terminate
         wait(NULL);
         return;
+    }
+}
+
+void exec_func(Token *t)
+{
+    if (strcmp(t->data, "exit") == 0)
+    {
+        exit(0);
     }
 }

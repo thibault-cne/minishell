@@ -18,10 +18,13 @@ ParserStatus parser_start(TokenList *l, const char *source)
     int lexi;
     int i;
     int pos;
+    int isFunc;
 
     lexi = 0;
     pos = 1;
     i = 0;
+
+    isFunc = 1;
 
     while (1)
     {
@@ -36,22 +39,40 @@ ParserStatus parser_start(TokenList *l, const char *source)
         // Check for empty line
         if (lexi == 0)
         {
-            return PARSER_GET_EMPTY_LINE;
+            break;
         }
 
         Token t;
         TokenType type;
 
-        type = parser_get_token_type(lex);
+        if (isFunc == 1)
+        {
+            type = parser_get_func(lex);
+
+            if (type == (TokenType)-1)
+            {
+                type = BULTIN;
+            }
+
+            isFunc = 0;
+        }
+        else
+        {
+            type = parser_get_token_type(lex);
+        }
 
         create_token(&t, type, pos, lex);
         add_token_list(l, t);
-        printf("New token : %d %s\n", t.type, t.data);
-
         // Check for end of input
         if (source[i] == '\0')
         {
             break;
+        }
+
+        // If we have a pipe, next token is a function
+        if (source[0] == '|')
+        {
+            isFunc = 1;
         }
 
         // Increment pos
@@ -67,15 +88,15 @@ ParserStatus parser_start(TokenList *l, const char *source)
 
 TokenType parser_get_func(const char *buf)
 {
-    if (strcmp(buf, "ls") == 0)
+    if (strcmp(buf, "help") == 0)
     {
         return FUNC;
     }
-    if (strcmp(buf, "cat") == 0)
+    if (strcmp(buf, "hello") == 0)
     {
         return FUNC;
     }
-    if (strcmp(buf, "pwd") == 0)
+    if (strcmp(buf, "exit") == 0)
     {
         return FUNC;
     }
@@ -85,23 +106,14 @@ TokenType parser_get_func(const char *buf)
 
 TokenType parser_get_token_type(const char *buf)
 {
-    TokenType t;
-
-    t = parser_get_func(buf);
-
-    if (t == (TokenType)-1)
+    if (buf[0] == '-')
     {
-        if (buf[0] == '-')
-        {
-            return OPT;
-        }
-        if (buf[0] == '|')
-        {
-            return PIPE;
-        }
-
-        return ARG;
+        return OPT;
+    }
+    if (buf[0] == '|')
+    {
+        return PIPE;
     }
 
-    return t;
+    return ARG;
 }

@@ -9,6 +9,7 @@
 enum _TokenType
 {
     FUNC,
+    BULTIN,
     ARG,
     OPT,
     PIPE,
