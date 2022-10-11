@@ -8,6 +8,7 @@ enum _TokenType
     FUNC,
     ARG,
     OPT,
+    PIPE,
 };
 typedef enum _TokenType TokenType;
 

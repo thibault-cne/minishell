@@ -99,6 +99,10 @@ TokenType parser_get_token_type(const char *buf)
         {
             return OPT;
         }
+        if (buf[0] == '|')
+        {
+            return PIPE;
+        }
 
         return ARG;
     }
