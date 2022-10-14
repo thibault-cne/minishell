@@ -53,7 +53,7 @@ int main(int argc, char **argv)
         TokenList tokens;
 
         create_token_list(&tokens, 1);
-        red_string("shell > ");
+        red_string("minishell > ");
         fgets(s, 0x100, stdin);
 
         ParserStatus pstat = parser_start(&tokens, s);

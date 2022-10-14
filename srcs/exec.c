@@ -67,7 +67,7 @@ ExecStatus execution_start(TokenList *l)
 
         if (t->type == FUNC)
         {
-            exec_func(t);
+            exec_func(l, i);
         }
     }
 
@@ -123,10 +123,32 @@ void exec_args(Exec *e, char *f[MAX_ARGS])
     }
 }
 
-void exec_func(Token *t)
+void exec_func(TokenList *l, int i)
 {
+    Token *t;
+
+    t = get_token_list(l, i);
+
     if (strcmp(t->data, "exit") == 0)
     {
         exit(0);
     }
+    if (strcmp(t->data, "cd") == 0)
+    {
+        cd(get_token_list(l, i + 1));
+    }
+}
+
+void cd(Token *t)
+{
+    char cwd[0xFF];
+    char path[1000];
+
+    strcpy(path, t->data);
+
+    getcwd(cwd, sizeof(cwd));
+
+    strcat(cwd, "/");
+    strcat(cwd, path);
+    chdir(cwd);
 }

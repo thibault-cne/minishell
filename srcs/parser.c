@@ -100,6 +100,10 @@ TokenType parser_get_func(const char *buf)
     {
         return FUNC;
     }
+    if (strcmp(buf, "cd") == 0)
+    {
+        return FUNC;
+    }
 
     return (TokenType)-1;
 }
