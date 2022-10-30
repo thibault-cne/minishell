@@ -29,6 +29,9 @@ void print_error(Error err)
     case ERROR_ARGUMENTS:
         printf("Invalid arguments");
         break;
+    case ERROR_MALLOC:
+        printf("Memory allocation failed");
+        break;
     }
     putchar('\n');
     if (err.msg)
