@@ -5,76 +5,38 @@
 /*                                                                                                              */
 // by Thibault Cheneviere : thibault.cheneviere@telecomnancy.eu
 /*                                                                                                              */
-// Created : 2022/10/11 08/22/43
+// Created : 2022/10/30 18/16/37
 /*                                                                                                              */
 /*                                                                                                              */
 /* ************************************************************************************************************ */
 
-#include <stdio.h>
+#include "../includes/main.h"
 
-#include "../includes/parser.h"
-#include "../includes/exec.h"
-#include "../includes/colors.h"
-
-int main(int argc, char **argv)
+int main(void)
 {
-    if (argc == 2)
+    char *input;
+    Error err;
+
+    err = ok;
+
+    input = (char *)malloc(sizeof(char) * MAX_SIZE);
+
+    while (1 && err.type == ERROR_NONE)
     {
-        TokenList tokens;
+        int s;
 
-        create_token_list(&tokens, 1);
+        printf(">>");
+        fgets(input, MAX_SIZE, stdin);
 
-        ParserStatus pstat = parser_start(&tokens, argv[1]);
+        s = parse_expr(&err, input);
+        print_error(err);
 
-        if (pstat != PARSER_SUCCESS)
+        if (!s)
         {
-            printf("Error during parsing.\n");
-            return 1;
+            break;
         }
-
-        ExecStatus estat = execution_start(&tokens);
-
-        if (estat != EXEC_SUCCESS)
-        {
-            printf("Error during execution");
-            return 1;
-        }
-
-        // Free all allocated memory
-        destroy_token_list(&tokens);
-
-        return 0;
     }
 
-    char s[0x100];
-
-    while (1)
-    {
-        TokenList tokens;
-
-        create_token_list(&tokens, 1);
-        red_string("minishell > ");
-        fgets(s, 0x100, stdin);
-
-        ParserStatus pstat = parser_start(&tokens, s);
-
-        if (pstat != PARSER_SUCCESS)
-        {
-            printf("Error during parsing.\n");
-            return 1;
-        }
-
-        ExecStatus estat = execution_start(&tokens);
-
-        if (estat != EXEC_SUCCESS)
-        {
-            printf("Error during execution");
-            return 1;
-        }
-
-        // Destroy allocated memory to restart the next command.
-        destroy_token_list(&tokens);
-    }
-
+    free(input);
     return 0;
 }

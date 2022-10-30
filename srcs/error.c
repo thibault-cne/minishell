@@ -1,49 +1,38 @@
 /* ************************************************************************************************************ */
 /*                                                                                                              */
 /*                                                                                                              */
-// colors.c
+// error.c
 /*                                                                                                              */
 // by Thibault Cheneviere : thibault.cheneviere@telecomnancy.eu
 /*                                                                                                              */
-// Created : 2022/10/11 14/32/04
+// Created : 2022/10/30 18/31/48
 /*                                                                                                              */
 /*                                                                                                              */
 /* ************************************************************************************************************ */
 
-#include "../includes/colors.h"
+#include "../includes/error.h"
 
-void reset()
-{
-    printf("\033[0m");
-}
+Error ok = {ERROR_NONE, NULL};
 
-void red()
+void print_error(Error err)
 {
-    printf("\033[31m");
-}
-void red_string(char *s)
-{
-    red();
-    printf("%s", s);
-    reset();
-}
-
-void blue()
-{
-    printf("\033[34m");
-}
-void blue_string(char *s)
-{
-    blue();
-    printf("%s", s);
-    reset();
-}
-
-void red_bg()
-{
-    printf("\033[41m");
-}
-void blue_bg()
-{
-    printf("\033[44m");
+    if (err.type == ERROR_NONE)
+    {
+        return;
+    }
+    printf("ERROR: ");
+    switch (err.type)
+    {
+    default:
+        printf("Unkown error type...");
+        break;
+    case ERROR_ARGUMENTS:
+        printf("Invalid arguments");
+        break;
+    }
+    putchar('\n');
+    if (err.msg)
+    {
+        printf("     : %s\n", err.msg);
+    }
 }

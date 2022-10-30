@@ -1,4 +1,7 @@
-FILES 	=	main.c parser.c token.c exec.c colors.c
+FILES 	=	main.c		\
+			parser.c	\
+			lexer.c		\
+			error.c		\
 
 S_PATH	=	srcs/
 O_PATH	=	objs/
@@ -14,7 +17,7 @@ NAME	=	minishell
 
 RM		=	rm -rf
 
-CFLAGS		=	-DSNOW_ENABLED -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls
+CFLAGS		=	-Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls
 
 ${O_PATH}%.o:	${S_PATH}%.c
 				@mkdir -p ${dir $@}

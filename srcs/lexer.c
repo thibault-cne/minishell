@@ -1,54 +1,30 @@
 /* ************************************************************************************************************ */
 /*                                                                                                              */
 /*                                                                                                              */
-// token.c
+// lexer.c
 /*                                                                                                              */
 // by Thibault Cheneviere : thibault.cheneviere@telecomnancy.eu
 /*                                                                                                              */
-// Created : 2022/10/10 22/37/09
+// Created : 2022/10/30 18/23/31
 /*                                                                                                              */
 /*                                                                                                              */
 /* ************************************************************************************************************ */
 
-#include "../includes/token.h"
+#include "../includes/lexer.h"
 
-void create_token(Token *t, int type, int pos, char *data)
+void lex(Error *err, char *source, char **beg, char **end)
 {
-    t->type = type;
-    t->pos = pos;
-    strncpy(t->data, data, MAX_SIZE);
-}
+    const char *whitespaces = " \r\n";
+    const char *delimiters = " \r\n";
 
-void create_token_list(TokenList *l, int size)
-{
-    l->data = (Token *)malloc(sizeof(Token) * size);
-    l->ptr = 0;
-    l->size = size;
-}
-
-void add_token_list(TokenList *l, Token tok)
-{
-    if (l->ptr >= l->size)
+    if (!source || !beg || !end)
     {
-        l->size *= 2;
-        l->data = (Token *)realloc(l->data, sizeof(Token) * l->size);
+        ERROR_PREP(*err, ERROR_ARGUMENTS, "Invalid arguments");
+        return;
     }
 
-    Token *t = &l->data[l->ptr++];
-    create_token(t, tok.type, tok.pos, tok.data);
-}
-
-Token *get_token_list(TokenList *l, int i)
-{
-    if (i >= l->size)
-    {
-        return NULL;
-    }
-
-    return &l->data[i];
-}
-
-void destroy_token_list(TokenList *l)
-{
-    free(l->data);
+    *beg = source;
+    *beg += strspn(*beg, whitespaces);
+    *end = *beg;
+    *end += strcspn(*beg, delimiters);
 }
