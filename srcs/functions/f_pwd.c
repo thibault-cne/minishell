@@ -20,9 +20,7 @@ void f_pwd(Error *err)
 
 	if (!path) { ERROR_PREP(*err, ERROR_MALLOC, "Error while allocating the path variable."); return; }
 	
-	if (fork() == 0) {
-		getcwd(path, PATH_MAX);
-	}
+	getcwd(path, PATH_MAX);
 
     printf("%s\n", path);
 

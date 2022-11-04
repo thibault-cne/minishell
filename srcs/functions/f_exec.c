@@ -25,6 +25,7 @@ void f_exec(Error *err, t_list_t *tl) {
 	while (f_name[++i]) {
 		if (!strcmp(f_name[i], t_func->value)) {
 				printf("Found\n"); 
+				__f[i](err);
 		}
 	}
 }

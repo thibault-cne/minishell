@@ -9,6 +9,8 @@
 
 #ifdef __functions
 const char *f_name[] = {"pwd", NULL};
+
+void (*__f[])(Error *) = {f_pwd};
 #endif
 
 void f_exec(Error *err, t_list_t *token_list);

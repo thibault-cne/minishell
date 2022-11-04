@@ -14,7 +14,7 @@ Minishell is a project to build a shell in C.
 
 - [ ] echo
 - [ ] cd
-- [ ] pwd
+- [x] pwd
 - [ ] export
 - [ ] unset
 - [ ] env
