@@ -1,7 +1,10 @@
-FILES 	=	main.c		\
-			parser.c	\
-			lexer.c		\
-			error.c		\
+FILES 	=	main.c				\
+			parser.c			\
+			lexer.c				\
+			error.c				\
+			token.c				\
+			functions/f_pwd.c	\
+			functions/f_exec.c	\
 
 S_PATH	=	srcs/
 O_PATH	=	objs/

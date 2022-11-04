@@ -12,26 +12,26 @@
 
 #include "../includes/token.h"
 
-void create_token(Error *err, token *t, char *value, int type)
+void create_token(Error *err, token_t *t, char *tok_value, enum _token_type tok_type)
 {
-    if (!t || !value)
+    if (!t || !tok_value)
     {
         ERROR_PREP(*err, ERROR_ARGUMENTS, "Invalid arguments in create_token");
         return;
     }
 
-    t->type = type;
+    t->type = tok_type;
 
-    t->value = (char *)malloc(sizeof(char) * (strlen(value) + 1));
+    t->value = (char *)malloc(sizeof(char) * (strlen(tok_value) + 1));
     if (!t->value)
     {
         ERROR_PREP(*err, ERROR_MALLOC, "Malloc failed for token value");
         return;
     }
-    strcpy(t->value, value);
+    strcpy(t->value, tok_value);
 }
 
-void destroy_token(Error *err, token *t)
+void destroy_token(Error *err, token_t *t)
 {
     if (!t)
     {
@@ -43,7 +43,7 @@ void destroy_token(Error *err, token *t)
     t->value = NULL;
 }
 
-void create_token_list(Error *err, token_list *tl, int size)
+void create_token_list(Error *err, t_list_t *tl, int size)
 {
     if (!tl)
     {
@@ -52,7 +52,8 @@ void create_token_list(Error *err, token_list *tl, int size)
     }
 
     tl->size = size;
-    tl->data = (token *)malloc(sizeof(token) * size);
+    tl->data = (token_t *)malloc(sizeof(token_t) * size);
+	tl->ptr = 0;
     if (!tl->data)
     {
         ERROR_PREP(*err, ERROR_MALLOC, "Malloc failed for token_list");
@@ -60,7 +61,7 @@ void create_token_list(Error *err, token_list *tl, int size)
     }
 }
 
-void add_token_list(Error *err, token_list *tl, token tok)
+void add_token_list(Error *err, t_list_t *tl, token_t tok)
 {
     if (!tl)
     {
@@ -71,7 +72,7 @@ void add_token_list(Error *err, token_list *tl, token tok)
     if (tl->ptr >= tl->size)
     {
         tl->size *= 2;
-        tl->data = (token *)realloc(tl->data, sizeof(token) * tl->size);
+        tl->data = (token_t *)realloc(tl->data, sizeof(token_t) * tl->size);
         if (!tl->data)
         {
             ERROR_PREP(*err, ERROR_MALLOC, "Realloc failed for token_list");
@@ -79,13 +80,14 @@ void add_token_list(Error *err, token_list *tl, token tok)
         }
     }
 
-    token *t;
+    token_t *t;
 
     t = &tl->data[tl->ptr++];
+
     create_token(err, t, tok.value, tok.type);
 }
 
-token *get_token_list(Error *err, token_list *tl, int i)
+token_t *get_token_list(Error *err, t_list_t *tl, int i)
 {
     if (!tl)
     {
@@ -102,7 +104,7 @@ token *get_token_list(Error *err, token_list *tl, int i)
     return &tl->data[i];
 }
 
-void destroy_token_list(Error *err, token_list *tl)
+void destroy_token_list(Error *err, t_list_t *tl)
 {
     if (!tl)
     {

@@ -1,38 +1,30 @@
 /* ************************************************************************************************************ */
 /*                                                                                                              */
 /*                                                                                                              */
-// lexer.c
+// f_exec.c
 /*                                                                                                              */
 // by Thibault Cheneviere : thibault.cheneviere@telecomnancy.eu
 /*                                                                                                              */
-// Created : 2022/10/30 18/23/31
+// Created : 2022/10/30 22/55/30
 /*                                                                                                              */
 /*                                                                                                              */
 /* ************************************************************************************************************ */
 
-#include "../includes/lexer.h"
+#define __functions
 
-void lex(Error *err, char *source, char **beg, char **end)
-{
-    const char *whitespaces = " \r\n";
-    const char *delimiters = " \r\n";
+#include "../../includes/functions/f_exec.h"
 
-    if (!source || !beg || !end)
-    {
-        ERROR_PREP(*err, ERROR_ARGUMENTS, "Invalid arguments");
-        return;
-    }
+void f_exec(Error *err, t_list_t *tl) {
+	token_t *t_func;
+	int i;
 
-    *beg = source;
-    *beg += strspn(*beg, whitespaces);
+	t_func = get_token_list(err, tl, 0);
 
-	if (*beg[0] == '"') {
-		*beg += 1;
-    	*end = *beg;
-		*end += strcspn(*beg, "\"");
-		return;
+	i = -1;
+
+	while (f_name[++i]) {
+		if (!strcmp(f_name[i], t_func->value)) {
+				printf("Found\n"); 
+		}
 	}
-
-    *end = *beg;
-    *end += strcspn(*beg, delimiters);
 }

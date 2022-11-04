@@ -5,7 +5,8 @@
 
 #include "error.h"
 #include "lexer.h"
+#include "token.h"
 
-int parse_expr(Error *err, char *source);
+int parse_expr(Error *err, t_list_t *tl, char *source);
 
 #endif // MINISHELL_PARSER_H

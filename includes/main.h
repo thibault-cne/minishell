@@ -6,8 +6,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 #include "error.h"
 #include "parser.h"
+#include "token.h"
+#include "functions/f_exec.h"
 
 #endif // MINISHELL_MAIN_H

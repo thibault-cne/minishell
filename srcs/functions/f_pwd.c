@@ -1,38 +1,30 @@
 /* ************************************************************************************************************ */
 /*                                                                                                              */
 /*                                                                                                              */
-// lexer.c
+// f_pwd.c
 /*                                                                                                              */
 // by Thibault Cheneviere : thibault.cheneviere@telecomnancy.eu
 /*                                                                                                              */
-// Created : 2022/10/30 18/23/31
+// Created : 2022/10/30 22/52/47
 /*                                                                                                              */
 /*                                                                                                              */
 /* ************************************************************************************************************ */
 
-#include "../includes/lexer.h"
+#include "../../includes/functions/f_pwd.h"
 
-void lex(Error *err, char *source, char **beg, char **end)
+void f_pwd(Error *err)
 {
-    const char *whitespaces = " \r\n";
-    const char *delimiters = " \r\n";
+	char *path;
+	
+	path = (char *)malloc(sizeof(char) * PATH_MAX);
 
-    if (!source || !beg || !end)
-    {
-        ERROR_PREP(*err, ERROR_ARGUMENTS, "Invalid arguments");
-        return;
-    }
-
-    *beg = source;
-    *beg += strspn(*beg, whitespaces);
-
-	if (*beg[0] == '"') {
-		*beg += 1;
-    	*end = *beg;
-		*end += strcspn(*beg, "\"");
-		return;
+	if (!path) { ERROR_PREP(*err, ERROR_MALLOC, "Error while allocating the path variable."); return; }
+	
+	if (fork() == 0) {
+		getcwd(path, PATH_MAX);
 	}
 
-    *end = *beg;
-    *end += strcspn(*beg, delimiters);
+    printf("%s\n", path);
+
+	free(path);
 }

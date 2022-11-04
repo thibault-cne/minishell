@@ -6,7 +6,8 @@ Minishell is a project to build a shell in C.
 
 - [x] Lex an input from the use
 - [x] Exit the program if the use enter exit
-- [ ] Parse every token, verify them (function, options and parameters) and put it in a list
+- [x] Parse every token and put it in a list
+- [ ] Maybe verify tokens by type (function, options and parameters)
 - [ ] execute functions
 
 ## Supported functions and functionalities
@@ -21,7 +22,7 @@ Minishell is a project to build a shell in C.
 - [x] exit
 - [ ] history
 - [ ] handle single quote '
-- [ ] handle single quote "
+- [x] handle single quote "
 
 ## Licence
 
