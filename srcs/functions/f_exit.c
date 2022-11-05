@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                                            */
+/*   f_exit.c                                                                 */
+/*                                                                            */
+/*   By: Thibault Cheneviere <thibault.cheneviere@telecomnancy.eu>            */
+/*                                                                            */
+/*   Created: 2022/11/05 17:49:02 by Thibault Cheneviere                      */
+/*   Updated: 2022/11/05 17:49:08 by Thibault Cheneviere                      */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/functions/f_exit.h"
 
 

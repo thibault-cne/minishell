@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                                            */
+/*   f_echo.c                                                                 */
+/*                                                                            */
+/*   By: Thibault Cheneviere <thibault.cheneviere@telecomnancy.eu>            */
+/*                                                                            */
+/*   Created: 2022/11/05 17:49:19 by Thibault Cheneviere                      */
+/*   Updated: 2022/11/05 17:49:22 by Thibault Cheneviere                      */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/functions/f_echo.h"
 
 void f_echo(Error *err, t_list_t *token_list, char *input) {
