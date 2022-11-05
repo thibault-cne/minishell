@@ -14,7 +14,7 @@
 
 #include "../../includes/functions/f_exec.h"
 
-void f_exec(Error *err, t_list_t *tl) {
+void f_exec(Error *err, t_list_t *tl, char *input) {
 	token_t *t_func;
 	int i;
 
@@ -25,7 +25,7 @@ void f_exec(Error *err, t_list_t *tl) {
 	while (f_name[++i]) {
 		if (!strcmp(f_name[i], t_func->value)) {
 				printf("Found\n"); 
-				__f[i](err);
+				__f[i](err, tl, input);
 		}
 	}
 }

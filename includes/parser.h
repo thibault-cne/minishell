@@ -7,6 +7,6 @@
 #include "lexer.h"
 #include "token.h"
 
-int parse_expr(Error *err, t_list_t *tl, char *source);
+void parse_expr(Error *err, t_list_t *tl, char *source);
 
 #endif // MINISHELL_PARSER_H

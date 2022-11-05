@@ -12,19 +12,17 @@
 
 #include "../includes/parser.h"
 
-int parse_expr(Error *err, t_list_t *tl, char *source)
+void parse_expr(Error *err, t_list_t *tl, char *source)
 {
     (void)tl;
     char *beg;
     char *end;
 	int pos;
-    int s;
 
     beg = source;
     end = source;
 
 	pos = 1;
-    s = 1;
 
     while (err->type == ERROR_NONE)
     {
@@ -48,9 +46,6 @@ int parse_expr(Error *err, t_list_t *tl, char *source)
 
 		add_token_list(err, tl, t);
 
-        // Check if a token is equal to "exit"
-        if (!strcmp(temp, "exit")) { s = 0; }
-
         beg = end;
 
 		if (beg[0] == '"') {
@@ -60,6 +55,4 @@ int parse_expr(Error *err, t_list_t *tl, char *source)
         free(temp);
 		destroy_token(err, &t);
     }
-
-    return s;
 }

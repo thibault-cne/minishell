@@ -12,8 +12,10 @@
 
 #include "../../includes/functions/f_pwd.h"
 
-void f_pwd(Error *err)
+void f_pwd(Error *err, t_list_t *tl, char *input)
 {
+	(void)tl;
+	(void)input;
 	char *path;
 	
 	path = (char *)malloc(sizeof(char) * PATH_MAX);

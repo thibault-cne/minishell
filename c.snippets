@@ -1,0 +1,22 @@
+# C snippets
+
+## main
+snippet main
+	int main(int argc, char **argv, char **env) {
+		${0}
+	}
+
+## main void
+snippet mainv
+	int main(void) {
+		${0}
+	}
+
+## h header file
+snippet once
+	#ifndef ${1}_${2}_H
+	#define ${1}_${2}_H
+
+	${3}
+
+	#endif // ${1}_${2}_H

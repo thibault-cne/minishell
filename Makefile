@@ -5,6 +5,7 @@ FILES 	=	main.c				\
 			token.c				\
 			functions/f_pwd.c	\
 			functions/f_exec.c	\
+			functions/f_exit.c	\
 
 S_PATH	=	srcs/
 O_PATH	=	objs/
