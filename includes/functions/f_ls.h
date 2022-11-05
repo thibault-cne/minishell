@@ -9,6 +9,7 @@
 
 #include "../token.h"
 #include "../error.h"
+#include "../display.h"
 
 void f_ls(Error *err, t_list_t *token_list, char *source);
 int f_ls_check_path(const char *path);

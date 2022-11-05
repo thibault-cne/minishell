@@ -6,7 +6,7 @@
 /*   By: Thibault Cheneviere <thibault.cheneviere@telecomnancy.eu>            */
 /*                                                                            */
 /*   Created: 2022/11/05 20:21:38 by Thibault Cheneviere                      */
-/*   Updated: 2022/11/05 21:19:18 by Thibault Cheneviere                      */
+/*   Updated: 2022/11/05 21:31:07 by Thibault Cheneviere                      */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,12 @@ void f_ls_display_rec(const char *path) {
 		if (tab)
 			putchar(' ');
 		tab = 1;
-		printf("%s", entry->d_name);
+
+		if (entry->d_type == DT_DIR) {
+			f_printf("S|STYLE_BOLD|%s|S", entry->d_name);
+		} else {
+			f_printf(entry->d_name);
+		}
 	}
 
 	closedir(dir);
