@@ -6,6 +6,7 @@ FILES 	=	main.c				\
 			functions/f_pwd.c	\
 			functions/f_exec.c	\
 			functions/f_exit.c	\
+			functions/f_echo.c	\
 
 S_PATH	=	srcs/
 O_PATH	=	objs/

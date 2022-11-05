@@ -12,7 +12,7 @@ Minishell is a project to build a shell in C.
 
 ## Supported functions and functionalities
 
-- [ ] echo
+- [x] echo
 - [ ] cd
 - [x] pwd
 - [ ] export
@@ -22,7 +22,7 @@ Minishell is a project to build a shell in C.
 - [x] exit
 - [ ] history
 - [ ] handle single quote '
-- [x] handle single quote "
+- [x] handle double quote "
 
 ## Licence
 
