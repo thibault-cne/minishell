@@ -6,7 +6,7 @@
 /*   By: Thibault Cheneviere <thibault.cheneviere@telecomnancy.eu>            */
 /*                                                                            */
 /*   Created: 2022/11/05 17:50:38 by Thibault Cheneviere                      */
-/*   Updated: 2022/11/05 17:50:39 by Thibault Cheneviere                      */
+/*   Updated: 2022/11/05 21:13:44 by Thibault Cheneviere                      */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,13 @@ void parse_expr(Error *err, t_list_t *tl, char *source)
         temp = (char *)malloc(sizeof(char) * (end - beg + 1));
         strncpy(temp, beg, (int)(end - beg));
         temp[end - beg] = '\0';
-        printf("Token: %s\n", temp);
 		
 		if (pos == 1) { create_token(err, &t, temp, TOKEN_FUNC); }
-		else { create_token(err, &t, temp, TOKEN_ARGUMENT); }
+		else { 
+			if (temp[0] == '-') { create_token(err, &t, temp, TOKEN_OPTION); }
+			else { create_token(err, &t, temp, TOKEN_PARAMETER); }
+		}
+
 
 		add_token_list(err, tl, t);
 
@@ -51,6 +54,8 @@ void parse_expr(Error *err, t_list_t *tl, char *source)
 		if (beg[0] == '"') {
 			beg += 1;
 		}
+
+		pos++;
 
         free(temp);
 		destroy_token(err, &t);

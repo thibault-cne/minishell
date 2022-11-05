@@ -10,7 +10,8 @@ enum _token_type
 {
     TOKEN_NONE = 0,
     TOKEN_FUNC,
-    TOKEN_ARGUMENT,
+    TOKEN_OPTION,
+	TOKEN_PARAMETER,
     TOKEN_MAX,
 };
 struct _token

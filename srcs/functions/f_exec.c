@@ -6,7 +6,7 @@
 /*   By: Thibault Cheneviere <thibault.cheneviere@telecomnancy.eu>            */
 /*                                                                            */
 /*   Created: 2022/11/05 17:49:41 by Thibault Cheneviere                      */
-/*   Updated: 2022/11/05 17:49:45 by Thibault Cheneviere                      */
+/*   Updated: 2022/11/05 21:17:45 by Thibault Cheneviere                      */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void f_exec(Error *err, t_list_t *tl, char *input) {
 
 	while (f_name[++i]) {
 		if (!strcmp(f_name[i], t_func->value)) {
-				printf("Found\n"); 
 				__f[i](err, tl, input);
 		}
 	}
