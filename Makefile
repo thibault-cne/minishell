@@ -9,6 +9,8 @@ FILES 	=	main.c				\
 			functions/f_exit.c	\
 			functions/f_echo.c	\
 			functions/f_ls.c	\
+			functions/f_ls_2.c	\
+			functions/f_ls_3.c	\
 
 S_PATH	=	srcs/
 O_PATH	=	objs/
