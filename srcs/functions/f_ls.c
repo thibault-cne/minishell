@@ -6,7 +6,7 @@
 /*   By: Thibault Cheneviere <thibault.cheneviere@telecomnancy.eu>            */
 /*                                                                            */
 /*   Created: 2022/11/05 20:21:38 by Thibault Cheneviere                      */
-/*   Updated: 2022/11/11 21:18:57 by Thibault Cheneviere                      */
+/*   Updated: 2022/12/02 23:45:41 by Thibault Cheneviere                      */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,20 @@ void f_ls(Error *err, t_list_t *token_list, char *source) {
 	t = get_token_list(err, token_list, token_list->ptr - 1);
 	flags = ft_ls_get_opt(err, token_list);
 
-	if (!f_ls_check_path((const char *)t->value) && t->type == TOKEN_PARAMETER) {
-		return;
-	}
+	if (!f_ls_check_path((const char *)t->value) && t->type == TOKEN_PARAMETER) 
+		ERROR_PREP(*err, ERROR_EXEC, "Invalid path : %s")
 
-	if (t->type == TOKEN_PARAMETER) {
+//	if (token_list->ptr != 2 && t->type == TOKEN_OPTION)
+//		ERROR_PREP(*err, ERROR_EXEC, "Invalid path: %s")
+	
+	if (err->type != ERROR_NONE)
+		return;
+
+	if (t->type == TOKEN_PARAMETER)
 		f_ls_display_rec((const char *)t->value, flags);
-	} else {
+	else
 		f_ls_display_rec(".", flags); 
-	}
+	
 
 
 	putchar('\n');

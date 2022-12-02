@@ -6,7 +6,7 @@
 /*   By: Thibault Cheneviere <thibault.cheneviere@telecomnancy.eu>            */
 /*                                                                            */
 /*   Created: 2022/11/11 20:42:18 by Thibault Cheneviere                      */
-/*   Updated: 2022/11/11 20:51:53 by Thibault Cheneviere                      */
+/*   Updated: 2022/12/02 23:27:04 by Thibault Cheneviere                      */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,7 @@ int f_ls_check_path(const char *path) {
     struct stat st;
 
     if (!stat(path, &st))
-    {
         return S_ISDIR(st.st_mode);
-    }
 
     return 0;
 }

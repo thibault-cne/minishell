@@ -6,16 +6,14 @@
 
 #include "error.h"
 
-enum _token_type
-{
-    TOKEN_NONE = 0,
-    TOKEN_FUNC,
-    TOKEN_OPTION,
+enum _token_type {
+	TOKEN_NONE = 0,
+	TOKEN_FUNC,
+	TOKEN_OPTION,
 	TOKEN_PARAMETER,
     TOKEN_MAX,
 };
-struct _token
-{
+struct _token {
     enum _token_type type;
     char *value;
 };
@@ -24,8 +22,7 @@ typedef struct _token token_t;
 void create_token(Error *err, token_t *t, char *value, enum _token_type type);
 void destroy_token(Error *err, token_t *t);
 
-struct _token_list
-{
+struct _token_list {
     token_t *data;
     int ptr;
     int size;

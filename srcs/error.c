@@ -6,7 +6,7 @@
 /*   By: Thibault Cheneviere <thibault.cheneviere@telecomnancy.eu>            */
 /*                                                                            */
 /*   Created: 2022/11/05 17:50:09 by Thibault Cheneviere                      */
-/*   Updated: 2022/11/05 17:50:11 by Thibault Cheneviere                      */
+/*   Updated: 2022/12/02 23:34:36 by Thibault Cheneviere                      */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ void print_error(Error err)
     case ERROR_MALLOC:
         printf("Memory allocation failed");
         break;
+	case ERROR_EXEC:
+		printf("Error during execution");
+		break;
     }
     putchar('\n');
     if (err.msg)

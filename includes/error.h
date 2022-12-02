@@ -15,6 +15,7 @@ typedef struct _Error
         ERROR_NONE = 0,
         ERROR_ARGUMENTS,
         ERROR_MALLOC,
+		ERROR_EXEC,
         ERROR_MAX,
     } type;
     char *msg;
