@@ -6,7 +6,7 @@
 /*   By: Thibault Cheneviere <thibault.cheneviere@telecomnancy.eu>            */
 /*                                                                            */
 /*   Created: 2022/11/05 17:50:26 by Thibault Cheneviere                      */
-/*   Updated: 2022/12/02 23:33:56 by Thibault Cheneviere                      */
+/*   Updated: 2022/12/02 23:47:02 by Thibault Cheneviere                      */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main(void) {
 
 	input = (char *)malloc(sizeof(char) * MAX_SIZE);
 
-    while (1 && err.type == ERROR_NONE) {
+	while (1 && err.type == ERROR_NONE) {
 		t_list_t buf_t;
 
 		create_token_list(&err, &buf_t, 1);
