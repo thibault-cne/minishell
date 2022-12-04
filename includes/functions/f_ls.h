@@ -28,4 +28,6 @@ void ft_ls_display_line(struct dirent *entry);
 void ft_ls_display_l(struct dirent *entry, const char *path);
 void ft_putperm(const char *path);
 
+int f_ls_has_path(t_list_t *token_list);
+
 #endif // MINISHELL_F_LS_H

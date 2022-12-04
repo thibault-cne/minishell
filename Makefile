@@ -11,6 +11,7 @@ FILES 	=	main.c				\
 			functions/f_ls.c	\
 			functions/f_ls_2.c	\
 			functions/f_ls_3.c	\
+			functions/f_ls_4.c	\
 
 S_PATH	=	srcs/
 O_PATH	=	objs/
